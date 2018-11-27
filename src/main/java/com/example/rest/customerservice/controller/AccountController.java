@@ -22,7 +22,7 @@ public class AccountController {
         this.accountRepository = accountRepository;
     }
 
-    @PostMapping(value = "/custoemrs/{id}/accounts")
+    @PostMapping(value = "/customers/{id}/accounts")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Account save(@PathVariable long id, @RequestBody Account account){
 
@@ -38,7 +38,7 @@ public class AccountController {
 
         return accountRepository.findByCustomerId(id, pageable);
     }
-    @DeleteMapping(value = "/customers/{customerId}/accounts/{accountId")
+    @DeleteMapping(value = "/customers/{customerId}/accounts/{accountId}")
     public ResponseEntity<?> deleteAccount(@PathVariable long customerId, @PathVariable long accountId){
         if(!customerRepository.existsById(customerId)){
             throw new ResourceNotFoundException("customer is null");
