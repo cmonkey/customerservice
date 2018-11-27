@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +18,7 @@ public class Account implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", updatable = false)
+    @Column(name = "accountNumber", updatable = false)
     private long id;
 
     @Column(name = "name")
