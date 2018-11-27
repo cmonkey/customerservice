@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
     private CustomerRepository customerRepository;
 
-    public void CustomerController(CustomerRepository customerRepository){
+    public CustomerController(CustomerRepository customerRepository){
         this.customerRepository = customerRepository;
     }
 
@@ -30,7 +30,7 @@ public class CustomerController {
         return customerRepository.findAll(pageable);
     }
 
-    @GetMapping(value = "/custoemrs/{id}")
+    @GetMapping(value = "/customers/{id}")
     public Customer findById(@PathVariable long id){
         return customerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("customer is null"));
     }
@@ -45,7 +45,7 @@ public class CustomerController {
 
     }
 
-    @PutMapping(value = "/custoemrs/{id}")
+    @PutMapping(value = "/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable long id, @RequestBody Customer newCustomer){
         return customerRepository.findById(id).map(customer ->  {
             customer.setName(newCustomer.getName());
